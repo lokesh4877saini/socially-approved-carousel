@@ -23,17 +23,18 @@ export default function VideoActions({
   const shareMutation = useShare();
 
   const handleShare = async () => {
+    const shareUrl = `${window.location.origin}?videoId=${video.id}`;
+
     try {
       if (navigator.share) {
         await navigator.share({
           title: video.title,
           text: video.description,
-          url: window.location.href,
+          url: shareUrl,
         });
       } else {
-        await navigator.clipboard.writeText(
-          window.location.href
-        );
+        await navigator.clipboard.writeText(shareUrl);
+        // Optional: show a toast like "Link copied!"
       }
 
       shareMutation.mutate({
@@ -41,7 +42,9 @@ export default function VideoActions({
         user: "guest",
         platform: "web",
       });
-    } catch {}
+    } catch (error) {
+      console.error("Share failed:", error);
+    }
   };
 
   return (
@@ -59,12 +62,12 @@ export default function VideoActions({
         }
       />
 
-      <button>
+      <button className="cursor-pointer">
         <MessageCircle />
         <p>{video.comments}</p>
       </button>
 
-      <button onClick={handleShare}>
+      <button onClick={handleShare} className="cursor-pointer">
         <Share2 />
         <p>{video.shares}</p>
       </button>

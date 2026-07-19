@@ -35,16 +35,28 @@ export default function VideoPlayer({
 
     const [progress, setProgress] = useState(0);
 
-    // let we are doing play and pause
     useEffect(() => {
         const el = videoRef.current;
 
         if (!el) return;
 
-        if (!isActive) {
+        if (isActive) {
+            el.currentTime = 0;
+
+            el.play()
+                .then(() => {
+                    setPlaying(true);
+                })
+                .catch(() => {
+                    setPlaying(false);
+                });
+
+        } else {
             el.pause();
+            el.currentTime = 0;
             setPlaying(false);
         }
+
     }, [isActive]);
 
     const togglePlay = () => {
@@ -100,10 +112,10 @@ export default function VideoPlayer({
                 ref={videoRef}
                 src={video.videoUrl}
                 className="h-full w-full object-cover"
-                autoPlay
                 loop
                 muted={muted}
                 playsInline
+                preload={isActive ? "auto" : "metadata"}
                 onPlay={() => setPlaying(true)}
                 onPause={() => setPlaying(false)}
                 onLoadedData={() => setLoading(false)}
