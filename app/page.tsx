@@ -29,7 +29,7 @@ export default function Home() {
       <div className="mx-auto max-w-7xl p-6 flex items-center justify-center">
       <h1>Socially Approved carousel</h1>
       </div>
-      <main className="mx-auto max-w-7xl p-6 h-screen flex items-center justify-center">
+      <main className="md:p-6 md:h-screen flex items-center justify-center">
         <>
         <OuterCarousel videos={videos ?? []} />
         <VideoModal />

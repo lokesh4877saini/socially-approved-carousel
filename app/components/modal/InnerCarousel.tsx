@@ -29,9 +29,21 @@ export default function InnerCarousel({
         <Swiper
             effect="coverflow"
             direction="horizontal"
-            centeredSlides
-            slidesPerView={4}
-            spaceBetween={0}
+            centeredSlides={true}
+            breakpoints={{
+                0: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 0,
+                },
+            }}
             initialSlide={initialIndex}
             mousewheel
             keyboard
@@ -53,7 +65,7 @@ export default function InnerCarousel({
             className="relative aspect-[9/16] h-[90vh] rounded-2xl  w-screen"
         >
             {videos.map((video, index) => {
-                
+
                 const shouldRenderVideo =
                     Math.abs(activeIndex - index) <= 4;
 

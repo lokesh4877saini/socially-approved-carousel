@@ -81,7 +81,7 @@ export default function VideoPlayer({
 
     if (!shouldRenderVideo) {
         return (
-            <div className="relative aspect-[9/16] h-[90vh] w-[350px] overflow-hidden rounded-2xl">
+            <div className="aspect-[9/16] h-[90vh] overflow-hidden rounded-2xl">
                 <Image
                     src={video.thumbnail}
                     alt={video.title}
@@ -94,7 +94,7 @@ export default function VideoPlayer({
     }
 
     return (
-        <div className="relative aspect-[9/16] h-[90vh] w-[350px] overflow-hidden rounded-2xl bg-black">
+        <div className="aspect-[9/16] h-[90vh] w-full lg:w-[350px] overflow-hidden rounded-2xl bg-black">
 
             <video
                 ref={videoRef}
@@ -142,7 +142,7 @@ export default function VideoPlayer({
             {/* Mute */}
             <button
                 onClick={toggleMute}
-                className="absolute right-4 top-4 rounded-full bg-black/40 p-2 text-white cursor-pointer"
+                className="absolute md:right-4 md:top-4 rounded-full bg-black/40 p-2 text-white cursor-pointer"
             >
                 {muted ? (
                     <VolumeX />

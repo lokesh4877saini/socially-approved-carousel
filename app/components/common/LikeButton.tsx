@@ -15,7 +15,7 @@ export default function LikeButton({
   isLoading = false,
   onClick,
 }: Props) {
-  console.log(liked,"already?")
+  // console.log(liked,"already?")
   return (
     <button
       onClick={onClick}

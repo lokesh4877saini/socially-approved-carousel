@@ -14,7 +14,7 @@ export default function VideoCard({
   return (
     <button
       onClick={onClick}
-      className="group relative aspect-[9/16] w-full overflow-hidden rounded-xl"
+      className="group aspect-[9/16] w-full  overflow-hidden rounded-xl bg-red-400"
     >
       <Image
         src={video.thumbnail}

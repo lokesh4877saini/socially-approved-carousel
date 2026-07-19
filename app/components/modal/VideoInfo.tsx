@@ -10,7 +10,7 @@ export default function VideoInfo({
   video,
 }: Props) {
   return (
-    <div className="absolute bottom-0 left-0 right-20 bg-gradient-to-t from-black via-black/70 to-transparent p-5 text-white">
+    <div className="absolute bottom-0 left-0 right-20 bg-transparent p-5 text-white">
 
       <h2 className="text-lg font-bold">
         {video.title}
